@@ -1,18 +1,11 @@
 # algorithm
 
+![I2okpi](https://cdn.jsdelivr.net/gh/atony2099/imgs@master/20200407/I2okpi.jpg)
 
-
-
-
-
-
-![image-20200407002240999](/Users/tang/Library/Application Support/typora-user-images/image-20200407002240999.png)
 
 ## singleLinkedList
 
 1. the operatin of  insertion and deletion don't mean to insert at specify index, not including the search operation, so the bigO is 1;
-
-
 
 
 
