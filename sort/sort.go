@@ -8,18 +8,9 @@ func BinarySearch(s []int, ele int) int {
 	middle := len(s) / 2
 
 	for left <= right {
-
 		if s[middle] == ele {
 			return middle
 		}
-
-		if left == right {
-			if s[left] == ele {
-				return left
-			}
-			return -1
-		}
-
 		if s[middle] > ele {
 			right = middle - 1
 		} else {
@@ -27,9 +18,60 @@ func BinarySearch(s []int, ele int) int {
 
 		}
 		middle = (left + right) / 2
+	}
+	return -1
+}
 
+func BinarySearch2(s []int, left, right, ele int) int {
+
+	for left <= right {
+		middle := (right + left) / 2
+
+		if s[middle] == ele {
+			return middle
+		}
+		if ele > s[middle] {
+			return BinarySearch2(s, middle+1, right, ele)
+		} else {
+			return BinarySearch2(s, left, middle-1, ele)
+		}
 	}
 
 	return -1
 
+}
+
+func partition(s []int, left, right int) int {
+	pre := left
+	pivot := s[left]
+
+	for left < right {
+
+		for s[right] >= pivot && left < right {
+			right--
+		}
+
+		for s[left] <= pivot && left < right {
+			left++
+		}
+
+		if left < right {
+			s[left], s[right] = s[right], s[left]
+		}
+
+	}
+
+	s[left], s[pre] = s[pre], s[left]
+
+	return left
+
+}
+
+func QuickSort(s []int, left, right int) {
+	if left < right {
+		divide := partition(s, left, right)
+		QuickSort(s, left, divide-1)
+		QuickSort(s, divide+1, right)
+
+	}
 }
